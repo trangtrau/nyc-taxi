@@ -7,6 +7,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 import pickle
+import time
 
 parser = argparse.ArgumentParser("train")
 parser.add_argument("--training_data", type=str, help="Path to training data")
@@ -85,3 +86,4 @@ pickle.dump(model, open((Path(args.model_output) / "model.sav"), "wb"))
 testX["cost"] = testy
 print(testX.shape)
 test_data = testX.to_csv((Path(args.test_data) / "test_data.csv"))
+while True: time.sleep(2) 
