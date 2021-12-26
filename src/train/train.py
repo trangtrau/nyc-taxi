@@ -86,4 +86,4 @@ pickle.dump(model, open((Path(args.model_output) / "model.sav"), "wb"))
 testX["cost"] = testy
 print(testX.shape)
 test_data = testX.to_csv((Path(args.test_data) / "test_data.csv"))
-while True: time.sleep(2) 
+
