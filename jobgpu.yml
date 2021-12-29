@@ -50,9 +50,6 @@ jobs:
     compute: azureml:gpu-cluster
     command: >-
       python train.py 
-      --training_data ${{inputs.training_data}} 
-      --test_data ${{outputs.test_data}} 
-      --model_output ${{outputs.model_output}}
     distribution:
       type: pytorch
       process_count_per_instance: 1
