@@ -43,13 +43,20 @@ jobs:
     inputs:
       training_data: ${{jobs.transform-job.outputs.transformed_data}}
     outputs:
-      model_dir:
+      model_output: 
+        mode: upload
+      test_data: 
+        mode: upload
     code:
       local_path: src/train
     environment: azureml:AzureML-pytorch-1.9-ubuntu18.04-py37-cuda11-gpu:6
     compute: azureml:gpu-cluster
     command: >-
       python train.py 
+      --training_data ${{inputs.training_data}} 
+      --test_data ${{outputs.test_data}} 
+      --model_output ${{outputs.model_output}}
+      
     distribution:
       type: pytorch
       process_count_per_instance: 1
@@ -69,6 +76,9 @@ jobs:
     compute: azureml:cpu-cluster
     command: >-
       python predict.py 
+      --model_input ${{inputs.model_input}} 
+      --test_data ${{inputs.test_data}}
+      --predictions ${{outputs.predictions}}
     score-job:
     type: command
     inputs:
@@ -83,4 +93,6 @@ jobs:
     compute: azureml:cpu-cluster
     command: >-      
       python score.py 
-     
+     --predictions ${{inputs.predictions}} 
+      --model ${{inputs.model}} 
+      --score_report ${{outputs.score_report}} 
