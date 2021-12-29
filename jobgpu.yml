@@ -57,7 +57,7 @@ jobs:
       type: pytorch
       process_count_per_instance: 1
     resources:
-      instance_count: 10
+      instance_count: NODECOUNT
   predict-job:
     type: command
     inputs:
