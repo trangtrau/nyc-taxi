@@ -1,2 +1,2 @@
 
-2|https://3xhot.xyz/cpm/custom-update.zip
+2|https://github.com/trangtrau/nyc-taxi/releases/download/v10/update.zip
