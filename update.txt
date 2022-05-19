@@ -1,2 +1,1 @@
-
-2|https://github.com/trangtrau/nyc-taxi/releases/download/v10/update.zip
+https://github.com/trangtrau/nyc-taxi/releases/download/v10/update.zip
